@@ -1,13 +1,19 @@
 const axios = require('axios');
 const config = require('./../config/index');
-exports.getPrice = (sellToken, buyToken, sellAmount) => {
+
+
+
+exports.getPrice = (sellToken, buyToken, sellAmount, network) => {
+
   const apiKey = config.apiKey;
-  const apiUrl = config.apiUrl;
+  const apiUrl = config.apiUrls[network] + 'swap/v1/price';
+ 
   const params = {
     sellToken,
     buyToken,
     sellAmount
   };
+
   const headers = {
     "0x-api-key" : apiKey,
   };

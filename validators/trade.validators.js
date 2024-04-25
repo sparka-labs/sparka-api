@@ -18,9 +18,22 @@ const tradeValidationSchema = {
   },
   sellAmount: {
     in: ['body'],
+    notEmpty: {
+        errorMessage: 'Sell amount is required'
+    },
     isInt: {
         options: { gt: 0 },
         errorMessage: 'Sell amount must be a positive integer'
+    }
+  },
+  network: {
+    in: ['body'],
+    notEmpty: {
+        errorMessage: 'Network is required'
+    },
+    isIn: {
+      options: [['ethereum', 'arbitrum', 'avalanche', 'base', 'bsc', 'celo', 'fantom', 'optimism', 'polygon']],
+      errorMessage: 'Specified network is not supported'
     }
   }
 };

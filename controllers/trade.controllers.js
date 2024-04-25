@@ -2,14 +2,9 @@ const tradeService = require('./../services/trade.services');
 
 exports.getPrice = (req, res) => {
     // Extract parameters from the request body
-    const { sellToken, buyToken, sellAmount } = req.body;
+    const { sellToken, buyToken, sellAmount, network } = req.body;
 
-    // Validate the parameters
-    if (!sellToken || !buyToken || !sellAmount) {
-        return res.status(400).json({ error: 'Missing required parameters' });
-    }
-
-    tradeService.getPrice(sellToken, buyToken, sellAmount)
+    tradeService.getPrice(sellToken, buyToken, sellAmount, network)
     .then(activeDexs => res.json(activeDexs))
     .catch(error => {
         console.error('API Request Failed:', error);
