@@ -14,6 +14,7 @@ exports.getPrice = (sellToken, buyToken, sellAmount) => {
 
   return axios.get(apiUrl, { params, headers })
     .then(response => {
-      return response.data.sources.filter(source => parseFloat(source.proportion) > 0);
+      //return response.data.sources.filter(source => parseFloat(source.proportion) > 0);
+      return response.data;
     });
 };
