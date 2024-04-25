@@ -1,7 +1,8 @@
 const axios = require('axios');
-
+const config = require('./../config/index');
 exports.getPrice = (sellToken, buyToken, sellAmount) => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = config.apiKey;
+  const apiUrl = config.apiUrl;
   const params = {
     sellToken,
     buyToken,
@@ -11,7 +12,7 @@ exports.getPrice = (sellToken, buyToken, sellAmount) => {
     "0x-api-key" : apiKey,
   };
 
-  return axios.get(process.env.API_URL, { params, headers })
+  return axios.get(apiUrl, { params, headers })
     .then(response => {
       return response.data.sources.filter(source => parseFloat(source.proportion) > 0);
     });
