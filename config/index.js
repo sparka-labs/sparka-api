@@ -1,4 +1,6 @@
 require('dotenv').config();
+const logger = require('./logger');
+
 
 module.exports = {
     port: process.env.PORT || 3000,
@@ -13,5 +15,6 @@ module.exports = {
         fantom: process.env.FANTOM_API_URL,
         optimism: process.env.OPTIMISM_API_URL,
         polygon: process.env.POLYGON_API_URL
-    }
+    },
+    logger,
 };
